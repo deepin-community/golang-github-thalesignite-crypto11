@@ -1,4 +1,9 @@
 #!/usr/bin/make -f
 
 %:
-	dh $@
+	dh $@ --builddirectory=_build --buildsystem=golang --with=golang
+
+# Disable testing because no testfiles are provided
+# Make sure to add golang-github-stretchr-testify-dev to
+# build-dependencies when reenabling tests
+override_dh_auto_test:
