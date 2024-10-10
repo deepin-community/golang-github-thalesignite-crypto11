@@ -1,15 +1,44 @@
-Source: template-repository
-Section: unknown
+Source: golang-github-thalesignite-crypto11
+Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Uploaders: Peymaneh <peymaneh@posteo.net>
+Section: golang
+Testsuite: autopkgtest-pkg-go
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Build-Depends: debhelper-compat (= 13),
+               dh-golang,
+               golang-any,
+               golang-github-miekg-pkcs11-dev,
+               golang-github-pkg-errors-dev,
+               golang-github-thales-e-security-pool-dev
+Standards-Version: 4.6.1.0
+Vcs-Browser: https://salsa.debian.org/go-team/packages/golang-github-thalesignite-crypto11
+Vcs-Git: https://salsa.debian.org/go-team/packages/golang-github-thalesignite-crypto11.git
+Homepage: https://github.com/ThalesIgnite/crypto11
+Rules-Requires-Root: no
+XS-Go-Import-Path: github.com/ThalesIgnite/crypto11
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: golang-github-thalesignite-crypto11-dev
+Architecture: all
+Depends: golang-github-miekg-pkcs11-dev,
+         golang-github-pkg-errors-dev,
+         golang-github-thales-e-security-pool-dev,
+         ${misc:Depends}
+Description: implementation of Golang crypto interfaces with PKCS#11 as backend
+ This package provides an implementation of the standard Golang crypto
+ interfaces that uses PKCS#11 as a backend. Signing is done through the
+ crypto.Signer interface and decryption through crypto.Decrypter.
+ .
+ Supported features are:
+  - Generation and retrieval of RSA, DSA and ECDSA keys.
+  - Importing and retrieval of x509 certificates
+  - PKCS#1 v1.5 signing.
+  - PKCS#1 PSS signing.
+  - PKCS#1 v1.5 decryption
+  - PKCS#1 OAEP decryption
+  - ECDSA signing.
+  - DSA signing.
+  - Random number generation.
+  - AES and DES3 encryption and decryption.
+  - HMAC support.
+ .
+ Documentation: https://godoc.org/github.com/ThalesIgnite/crypto11
